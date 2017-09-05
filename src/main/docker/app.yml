@@ -1,0 +1,13 @@
+version: '2'
+services:
+    jhipstersampleapplicationmicroservice-app:
+        image: jhipstersampleapplicationmicroservice
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATA_MONGODB_URI=mongodb://jhipstersampleapplicationmicroservice-mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=jhipsterSampleApplicationMicroService
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    jhipstersampleapplicationmicroservice-mongodb:
+        extends:
+            file: mongodb.yml
+            service: jhipstersampleapplicationmicroservice-mongodb
